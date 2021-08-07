@@ -1,41 +1,92 @@
 <template>
-  <div>
-  <div class="container text-dark">
-    <div class="row justify-content-md-center">
-      <div class="col-md-5 p-3 login justify-content-md-center">
-        <h1 class="h3 mb-3 font-weight-normal text-center">Create an account</h1>
+  <ValidationObserver ref="observer">
+    <b-form slot-scope="{ validate }" @submit.prevent="validate().then(register)">
+      <p class="error" v-if="incorrectAuth == true">A user with those details already exists.</p>
+      <ValidationProvider rules="required" name="Username">
+        <b-form-group slot-scope="{ valid, errors }" label="Username">
+            <b-form-input
+              type="text"
+              v-model="username"
+              :state="errors[0] ? false : (valid ? true : null)"
+              placeholder="Enter username">
+            </b-form-input>
+            <b-form-invalid-feedback>
+              {{ errors[0] }}
+            </b-form-invalid-feedback>
+        </b-form-group>
+      </ValidationProvider>
 
-        <form v-on:submit.prevent="register">
-          <div class="form-group">
-            <input type="text" name="username" id="user" v-model="username" class="form-control" placeholder="Username">
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" id="email" v-model="email" class="form-control" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <input type="password" name="password" id="pass" v-model="password" class="form-control" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
-        </form>
-        
-      </div>
-    </div>
-  </div>
-  </div>
+      <ValidationProvider rules="required|email" name="Email">
+        <b-form-group 
+          slot-scope="{ valid, errors }"
+          label="Email">
+            <b-form-input
+              type="email"
+              v-model="email"
+              :state="errors[0] ? false : (valid ? true : null)"
+              placeholder="Enter email">
+            </b-form-input>
+            <b-form-invalid-feedback>
+              {{ errors[0] }}
+            </b-form-invalid-feedback>
+        </b-form-group>
+      </ValidationProvider>
+
+      <ValidationProvider rules="required" name="Password" vid="password">
+        <b-form-group 
+          slot-scope="{ valid, errors }"
+          label="Password">      
+            <b-form-input
+              type="password"
+              v-model="password"
+              :state="errors[0] ? false : (valid ? true : null)"
+              placeholder="Enter password">
+            </b-form-input>
+            <b-form-invalid-feedback>
+              {{ errors[0] }}
+            </b-form-invalid-feedback>
+        </b-form-group>
+      </ValidationProvider>
+
+      <ValidationProvider rules="required|confirmed:password" name="Confirm Password">
+        <b-form-group 
+          slot-scope="{ valid, errors }"
+          label="Confirm Password">
+            <b-form-input
+              type="password"
+              v-model="confirmation"
+              :state="errors[0] ? false : (valid ? true : null)">
+            </b-form-input>
+            <b-form-invalid-feedback>
+              {{ errors[0] }}
+            </b-form-invalid-feedback>
+        </b-form-group>
+      </ValidationProvider>
+
+      <b-button block type="submit" variant="primary">Submit</b-button>
+    </b-form>
+  </ValidationObserver>
 </template>
 
 <script>
-  export default {
-    name: 'register',
-    data () {
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+
+export default {
+  components: {
+    ValidationObserver,
+    ValidationProvider
+  },
+  data () {
       return {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmation: '',
       }
-    },
-    methods: {
-      register () { 
+  },
+  methods: {
+    register () { 
+        console.log()
         this.$store.dispatch('userRegister', {
           username: this.username,
           email: this.email,
@@ -48,9 +99,9 @@
           console.log(err)
           this.incorrectAuth = true
         })
-        }
-      }
+    }
   }
+};
 </script>
 
 <style>
@@ -63,5 +114,16 @@ margin-top:10%;
 }
 input {
 padding: 25px 10px;
+}
+form {
+   max-width: 500px;
+   margin: 0 auto; 
+   text-align: left;
+}
+.form-group > label {
+    font-weight: 600;
+}
+.error {
+  color: red
 }
 </style>

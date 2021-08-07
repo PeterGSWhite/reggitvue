@@ -6,10 +6,15 @@ import jwt_decode from 'jwt-decode'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-     accessToken: localStorage.getItem('accessToken') || null,
-     refreshToken: localStorage.getItem('refreshToken') || null,
-     userId: localStorage.getItem('userId') || null,
-     APIData: '',
+    accessToken: localStorage.getItem('accessToken') || null,
+    refreshToken: localStorage.getItem('refreshToken') || null,
+    userId: localStorage.getItem('userId') || null,
+    APIData: '',
+    voteData: '',
+    pattern: '',
+    testText: '',
+    matches: '',
+    flags: 'g',
   },
   mutations: {
     updateTokenUserId (state, { access, refresh }) {
@@ -30,11 +35,32 @@ export default new Vuex.Store({
       state.userId = null;
       localStorage.removeItem('userId');
     },
+    updatePattern(state, payload) {
+      state.pattern = payload;
+    },
+    updateTestText(state, payload) {
+      state.testText = payload;
+    },
+    updateFlags(state, payload) {
+      state.flags = payload;
+    },
   },
   getters: {
     loggedIn (state) {
       return state.accessToken != null
-    }
+    },
+    flags({ flags }) {
+      return flags;
+    },
+    pattern({ pattern }) {
+      return pattern;
+    },
+    testText({ testText }) {
+      return testText;
+    },
+    matches({ testText, pattern, flags }) {
+      return pattern ? getMatches(testText, pattern, flags) : testText;
+    },
   },
   actions: {
     userLogout (context) {
@@ -88,3 +114,9 @@ export default new Vuex.Store({
     },
   }
 })
+
+const getMatches = (testText, pattern, flags) =>
+  testText
+    //.replace(/</g, '\\<')
+    .replace(new RegExp(pattern, flags), '<mark>$&</mark>');
+

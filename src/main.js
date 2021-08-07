@@ -6,9 +6,18 @@ import jwt_decode from 'jwt-decode'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules';
 
 import store from './store'
 import router from './routes.js'
+
+// Vee Validate setup
+Object.keys(rules).forEach(rule => {
+  extend(rule, rules[rule]);
+});
+Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationProvider', ValidationProvider);
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -18,7 +27,7 @@ const eventsHub = new Vue()
 Vue.use(IdleVue, {
   eventEmitter: eventsHub,
   startAtIdle: true,
-  idleTime: 30000
+  idleTime: 300000
 })
 
 

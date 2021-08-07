@@ -1,69 +1,57 @@
 <template>
   <div class="postCreate">
   <NavBar></NavBar>
-  <div class="submit-form">
-    <div>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          v-model="data.title"
-          name="title"
-        />
+  <div class="regex-box">
+    <div class="main">
+      <p class="error" v-if="error == true">All fields must be filled, please try again</p>
+      <div class="title-box-wrapper">
+        <input v-model="data.title" class="title-box" placeholder="Give your pattern a name"/>
       </div>
-      <div class="form-group">
-        <label for="pattern">Pattern</label>
-        <input
-          type="text"
-          class="form-control"
-          id="pattern"
-          required
-          v-model="data.pattern"
-          name="pattern"
-        />
-      </div>
-      <div class="form-group">
-        <label for="test_text">Example Text</label>
-        <input
-          type="text"
-          class="form-control"
-          id="test_text"
-          required
-          v-model="data.test_text"
-          name="test_text"
-        />
-      </div>
-
-      
+      <pattern-box />
+      <test-text-box />
+      <flags/>
       <button @click="savePost" class="btn btn-success">Submit</button>
     </div>
+    <aside>
+        <side-bar></side-bar>
+    </aside>
   </div>
 </div>
 </template>
 
 <script>
 import NavBar from '../components/Navbar'
+import testTextBox from '../components/TestTextBox';
+import patternBox from '../components/PatternBox';
+import flags from '../components/Flags';
+import sideBar from '../components/SideBar';
 import { getAPI } from '../axios-api'
 export default {
   name: "PostCreate",
   components: {
-      NavBar
+      NavBar,
+      testTextBox,
+      patternBox,
+      flags,
+      sideBar
   },
   data() {
     return {
       data: {
-        title: "",
-        pattern: "",
-        test_text: "",
-      }
+        title: ""
+      },
+      error: false
     };
   },
   methods: {
     savePost() {
-      getAPI.post('/posts/', this.data, { headers: { Authorization: `Bearer ${this.$store.state.accessToken}` }})
+      if(this.data.title && this.$store.state.pattern && this.$store.state.testText) {
+      let postData = {
+        title: this.data.title,
+        pattern: this.$store.state.pattern,
+        test_text: this.$store.state.testText
+      }
+      getAPI.post('/posts/', postData, { headers: { Authorization: `Bearer ${this.$store.state.accessToken}` }})
         .then(response => {
           console.log(response.data);
           this.$router.push({ name: 'posts' })
@@ -71,14 +59,79 @@ export default {
         .catch(e => {
           console.log(e);
         });
+      } else {
+        this.error = true
+      }
     },
   }
 };
 </script>
 
-<style>
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+<style scoped>
+*,
+*::before,
+*::after {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: 14px 'Open Sans', sans-serif;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+.regex-box {
+  background-color: #001221;
+  display: flex;
+  width: 850px;
+  height: 500px;
+  margin: 5rem auto;
+  position: relative;
+  border-radius: 5px;
+  transition: all 0.25s linear;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+}
+.title-box {
+  width: 100%;
+  font: inherit;
+  min-height: 46px;
+  background: transparent;
+  color: #d6d7cc;
+  padding: 2.3rem 25px;
+  border: 0;
+  outline: none;
+}
+.title-box-wrapper {
+  position: relative;
+  border-bottom: 1px solid #f7f7f72d !important;
+}
+.error {
+  color: red;
+  padding: 5px;
+}
+aside {
+  width: 300px;
+  padding: 1.5rem;
+  border-left: 1px solid #ffffff31;
+  overflow-y: scroll;
+}
+aside::-webkit-scrollbar {
+  background: #3f4545;
+  width: 10px !important;
+}
+aside::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+}
+aside::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+  -webkit-box-shadow: inset 0 0 6px rgba(54, 52, 52, 0.925) !important;
+  box-shadow: inset 0 0 6px rgba(54, 52, 52, 0.863) !important;
 }
 </style>

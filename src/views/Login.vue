@@ -5,7 +5,7 @@
       <div class="col-md-5 p-3 login justify-content-md-center">
         <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
 
-        <p v-if="incorrectAuth">Incorrect username or password entered - please try again</p>
+        <p class="error" v-if="incorrectAuth">Incorrect username or password entered - please try again</p>
         <form v-on:submit.prevent="login">
           <div class="form-group">
             <input type="text" name="username" id="user" v-model="username" class="form-control" placeholder="Username">
@@ -14,6 +14,7 @@
             <input type="password" name="password" id="pass" v-model="password" class="form-control" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+          <a href="/register" ><button type="button" class="btn btn-lg btn-secondary btn-block">Register</button></a>
         </form>
         
       </div>
@@ -60,5 +61,11 @@ margin-top:10%;
 }
 input {
 padding: 25px 10px;
+}
+button {
+  margin-right: 4px;
+}
+.error {
+  color: red
 }
 </style>
