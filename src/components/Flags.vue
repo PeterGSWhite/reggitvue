@@ -37,7 +37,7 @@ export default {
   display: flex;
   border-top: 1px solid #f7f7f72d;
   padding: 0.8rem;
-  color: #d6d7cc;
+  color: #6C756B;
 }
 .input-group {
   margin-right: 1.2rem;

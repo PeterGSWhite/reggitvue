@@ -39,7 +39,7 @@ export default {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #011627;
+  background-color: #54DEFD;
 }
 .test-text-box * {
   box-sizing: border-box;
@@ -73,7 +73,7 @@ textarea {
   color: transparent;
 }
 textarea::-webkit-scrollbar {
-  background: #282a36;
+  background: #54DEFD;
   width: 17px !important;
 }
 textarea::-webkit-scrollbar-track {
@@ -85,11 +85,11 @@ textarea::-webkit-scrollbar-thumb {
 .matches {
   white-space: pre-wrap;
   word-wrap: break-word;
-  color: white;
+  color: 6C756B;
 }
 
 .matches mark {
-  color: white;
+  color: 6C756B;
   background-color: #9e3cc0;
 }
 .matches mark:nth-child(even) {

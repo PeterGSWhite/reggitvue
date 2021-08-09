@@ -227,7 +227,7 @@
   margin-top: 1.6rem;
 }
 .reference * {
-  color: #fff;
+  color: #6C756B;
   font-size: 12px;
   font-weight: inherit;
   margin: 0;
@@ -250,7 +250,7 @@ li {
   margin-bottom: 15px;
 }
 .character__code {
-  background: #00080e;
+  background: #8BD7D2;
   border: 1px solid #f7f7f72d;
   padding: 0.3rem 0.8rem;
   display: flex;
@@ -261,7 +261,7 @@ li {
 .character__code span {
   white-space: nowrap;
   font-weight: 600;
-  color: #c77ce0;
+  color: #6C756B;
 }
 .character__info {
   display: flex;
@@ -275,15 +275,15 @@ li {
   font-weight: 600;
 }
 .disabled {
-  color: #888888 !important;
+  color: #6C756B !important;
 }
 .purple {
-  color: #c77ce0 !important;
+  color: #6C756B !important;
 }
 .blue {
-  color: #3c7fc2 !important;
+  color: #6C756B !important;
 }
 .white {
-  color: white !important;
+  color: #6C756B !important;
 }
 </style>

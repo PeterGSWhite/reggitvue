@@ -83,7 +83,7 @@ html {
   height: 100%;
 }
 .regex-box {
-  background-color: #001221;
+  background-color: #54DEFD;
   display: flex;
   width: 850px;
   height: 500px;
@@ -103,7 +103,7 @@ html {
   font: inherit;
   min-height: 46px;
   background: transparent;
-  color: #d6d7cc;
+  color: #6C756B;
   padding: 2.3rem 25px;
   border: 0;
   outline: none;

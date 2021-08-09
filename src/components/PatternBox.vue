@@ -38,7 +38,7 @@ export default {
   font: inherit;
   min-height: 46px;
   background: transparent;
-  color: #d6d7cc;
+  color: #6C756B;
   padding: 2.3rem 25px;
   border: 0;
   outline: none;
@@ -51,7 +51,7 @@ export default {
   position: absolute;
   width: 100%;
   bottom: 0;
-  color: #d6d7cc;
+  color: #6C756B;
   font-size: 12px;
   text-align: center;
   letter-spacing: 1px;

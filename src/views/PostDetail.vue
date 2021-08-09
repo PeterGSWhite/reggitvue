@@ -1,9 +1,9 @@
 <template>
   <div class="postDetail">
     <NavBar></NavBar>
-    <h1 style="text-align: center">Author: {{data.post.author}}</h1>
     <div class="regex-box">
       <div class="main">
+        <h1 class="author" style="text-align: center">Author: {{data.post.author}}</h1>
         <p class="error" v-if="data.error == true">All fields must be filled, please try again</p>
         <div class="title-box-wrapper">
           <input v-model="data.post.title" class="title-box" placeholder="Give your pattern a name"/>
@@ -98,7 +98,7 @@ html {
   height: 100%;
 }
 .regex-box {
-  background-color: #001221;
+  background-color: #54DEFD;
   display: flex;
   width: 850px;
   height: 500px;
@@ -106,6 +106,11 @@ html {
   position: relative;
   border-radius: 5px;
   transition: all 0.25s linear;
+}
+.author {
+  margin-top: 10px;
+  color: #6C756B;
+  width: 100%;
 }
 
 .main {
@@ -118,7 +123,7 @@ html {
   font: inherit;
   min-height: 46px;
   background: transparent;
-  color: #d6d7cc;
+  color: #6C756B;
   padding: 2.3rem 25px;
   border: 0;
   outline: none;
@@ -129,10 +134,6 @@ html {
 }
 .error {
   color: red;
-  padding: 5px;
-}
-.updated {
-  color: green;
   padding: 5px;
 }
 aside {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import IdleVue from 'idle-vue'
+//import IdleVue from 'idle-vue'
 import jwt_decode from 'jwt-decode'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -22,13 +22,13 @@ Vue.component('ValidationProvider', ValidationProvider);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
-const eventsHub = new Vue()
-
-Vue.use(IdleVue, {
-  eventEmitter: eventsHub,
-  startAtIdle: true,
-  idleTime: 300000
-})
+// Logs user out after certain amount of time idle
+//const eventsHub = new Vue()
+// Vue.use(IdleVue, {
+//   eventEmitter: eventsHub,
+//   startAtIdle: true,
+//   idleTime: 300000
+// })
 
 
 Vue.config.productionTip = false
