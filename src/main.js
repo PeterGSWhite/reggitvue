@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
 
   // Redirect to login page when unauthed user attempts to access protected resource
   if (to.matched.some(record => record.meta.requiresLogin)) {
-    if (!store.getters.loggedIn) {
+    if (!store.state.accessToken) {
       next({ name: 'login' })
     } else {
       next()
