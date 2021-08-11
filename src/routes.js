@@ -21,15 +21,16 @@ export default new VueRouter({
             path: '/posts',
             name: 'posts',
             component: Posts,
-            // meta: {
-            //     requiresLogin: true
-            // }
+            meta: {
+                title: 'Reggit - View Posts'
+            }
         },
         {
             path: '/posts/create',
             name: 'postCreate',
             component: PostCreate,
             meta: {
+                title: 'Reggit - Create Post',
                 requiresLogin: true
             }
         },
@@ -37,19 +38,25 @@ export default new VueRouter({
             path: '/posts/:id',
             name: 'postDetail',
             component: PostDetail,
-            // meta: {
-            //     requiresLogin: true
-            // }
+            meta: {
+                title: 'Reggit - Post Detail',
+            }
         },
         {
             path: '/login',
             name: 'login',
             component: Login,
+            meta: {
+                title: 'Reggit - Login',
+            }
         },
         {
             path: '/register',
             name: 'register',
             component: Register,
+            meta: {
+                title: 'Reggit - Register',
+            }
         },
         {
             path: '/logout',

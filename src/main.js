@@ -34,6 +34,7 @@ Vue.use(IconsPlugin)
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || 'Reggit';
   // Inspect token before each navigation
   if(store.state.accessToken) {
     const accesExp = jwt_decode(store.state.accessToken).exp;
@@ -63,7 +64,6 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
-
 
 new Vue({
   router,
