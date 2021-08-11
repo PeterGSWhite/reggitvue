@@ -28,7 +28,7 @@
                     </b-row>
                     <h4 class=""><a :href="'/posts/' + post.id +'/'">{{post.title}}</a></h4>
                     <p>by {{post.author}}</p>
-                    <p class="card-text">{{post.pattern}}</p>
+                    <!-- <p class="card-text">{{post.pattern}}</p> -->
                     <!-- <p class="card-text">{{post.test_text}}</p> -->
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
