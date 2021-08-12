@@ -5,7 +5,7 @@ Vue frontend to a regex snippet sharing CRUD application. Consumes a Rest API bu
 https://reggit.herokuapp.com/
 
 # Live demo of back-end
-https://reggit.herokuapp.com/swagger-docs/
+https://reggit.herokuapp.com/docs/
 
 # Link to back end code
 https://github.com/PeterGSWhite/reggitapi
