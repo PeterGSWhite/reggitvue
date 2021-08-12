@@ -1,24 +1,16 @@
 # reggitvue
+Vue frontend to a regex snippet sharing CRUD application. Consumes a Rest API built with Django Rest Framework.
 
-## Project setup
-```
-yarn install
-```
+# Live demo
+https://reggit.herokuapp.com/
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+# Live demo of back-end
+https://reggit.herokuapp.com/swagger-docs/
 
-### Compiles and minifies for production
-```
-yarn build
-```
+# Link to back end code
+https://github.com/PeterGSWhite/reggitapi
 
-### Lints and fixes files
-```
-yarn lint
-```
+# Built with  
+Vue 2
+Axios
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
