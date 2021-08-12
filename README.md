@@ -11,6 +11,6 @@ https://reggit.herokuapp.com/docs/
 https://github.com/PeterGSWhite/reggitapi
 
 # Built with  
-Vue 2
+Vue 2  
 Axios
 
