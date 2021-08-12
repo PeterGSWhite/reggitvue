@@ -1,5 +1,6 @@
 # reggitvue
-Vue frontend to a regex snippet sharing CRUD application. Consumes a Rest API built with Django Rest Framework.
+Vue frontend to a regex snippet sharing CRUD application.   
+Consumes a Rest API built with Django Rest Framework.
 
 # Live demo
 https://reggit.netlify.app/
