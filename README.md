@@ -1,5 +1,5 @@
 # reggitvue
-At it's core this is a simple CRUD application with a user model, registration and login. <br><br>
+At its core this is a simple CRUD application with a user model, registration and login. <br><br>
 The posts being CRUDed (if that's a word) are snippets of RegEx, and there is a built in preview window of the snippets in action.<br><br>
 This repo is for the Vue front end.<br><br>
 The backend is a Rest API built with Django Rest Framework.<br><br>
