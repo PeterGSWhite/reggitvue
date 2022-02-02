@@ -1,6 +1,8 @@
 # reggitvue
-Vue frontend to a regex sharing CRUD application.   
-Consumes a Rest API built with Django Rest Framework.
+At it's core this is a simple CRUD application with a user model, registration and login.
+The posts being CRUDed (if that's a word) are snippets of RegEx, and there is a built in preview window of the snippets in action.
+This repo is for the Vue front end.
+The backend is a Rest API built with Django Rest Framework.
 
 # Live demo
 https://reggit.netlify.app/
