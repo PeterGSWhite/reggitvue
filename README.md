@@ -5,6 +5,7 @@ This repo is for the Vue front end.<br><br>
 The backend is a Rest API built with Django Rest Framework.<br><br>
 
 # Live demo
+# Note: if you don't see anything, try refreshing. The Django API is on a free heroku tier where it sleeps when not in use.
 https://reggit.netlify.app/
 
 # Live demo of back-end
